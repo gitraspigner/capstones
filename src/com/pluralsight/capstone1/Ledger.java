@@ -23,7 +23,7 @@ public class Ledger {
     private final ArrayList<Transaction> ledger;
 
     public Ledger() {
-        this.ledger = new ArrayList<Transaction>();
+        this.ledger = new ArrayList<>();
     }
 
     public Ledger(ArrayList<Transaction> ledger) {
