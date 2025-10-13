@@ -14,7 +14,7 @@ public class App {
         Menus.displayWelcome();
         //---Test Inputs (prior to learning JUnit for this course) for more
         //transactions before current ones given by running a command line (App) session---
-        //test1(); //uncomment this entire line to run tests
+        test1(); //uncomment this entire line to run tests
         Menus.mainMenu();
     }
 
