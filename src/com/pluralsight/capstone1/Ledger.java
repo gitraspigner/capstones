@@ -3,13 +3,19 @@ package com.pluralsight.capstone1;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
- * *******Add program description here******
- * Alternate name for this would be transaction manager.
+ * Represents a ledger for a command-line-driven accounting ledger program.
+ * This ledger manages (stores & manipulates) transactions.
+ * Transactions, which are of 2 categories: deposits (positive dollar amounts) and payments
+ * (negative dollar amounts) in the ledger can be created, displayed (in multiple date ranges)
+ * and written to a file.
+ * A transaction displayed is in the following format:
+ * date|time|description|vendor|amount
  *
  * @author Ravi Spigner
  */
@@ -49,10 +55,26 @@ public class Ledger {
         }
     }
 
+    //uses current time for Transaction's dateTime
     public boolean makeTransaction(String description, String depositorOrVendorName,
                                    double amount) {
         return ledger.add(new Transaction(LocalDateTime.now(), description, depositorOrVendorName,
                 amount));
+    }
+
+    //uses dateTime parameter for Transaction's dateTime
+    public boolean makeTransaction(LocalDateTime dateTime, String description, String depositorOrVendorName,
+                                   double amount) {
+        return ledger.add(new Transaction(dateTime, description, depositorOrVendorName,
+                amount));
+    }
+
+    public void displayVendorTransactions(String vendorName) {
+        for(Transaction t : ledger) {
+            if(t.getDepositorOrVendorName().equalsIgnoreCase(vendorName)) {
+                System.out.println(t);
+            }
+        }
     }
 
     public ArrayList<Transaction> getTransactionsByDateRange(LocalDateTime start,
@@ -123,7 +145,22 @@ public class Ledger {
         //will need to use append always
         //this syntax for the try block
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename, true))) {
-            bufferedWriter.write("new user at: " + LocalDateTime.now().format(
+            for (Transaction t : ledger) {
+                bufferedWriter.write(t.toString());
+                bufferedWriter.newLine();
+            }
+            //closes automatically using try block syntax above,
+            //no need for manual bufferedWriter.close() here
+        } catch (IOException e) {
+            e.printStackTrace(); // Could not write to file
+        }
+    }
+
+    public void writeToFileUsername(String filename, String username) {
+        //will need to use append always
+        //this syntax for the try block
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename, true))) {
+            bufferedWriter.write("new user (" + username + ") at: " + LocalDateTime.now().format(
                     DateTimeFormatter.ofPattern("yyyy-MM-dd|HH:mm:ss")));
             bufferedWriter.newLine();
 

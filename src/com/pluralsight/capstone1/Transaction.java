@@ -4,17 +4,22 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * *******Add program description here******
+ * Represents a transaction for a command-line-driven accounting ledger program.
+ * Transactions are of 2 categories: deposits (positive dollar amounts) and payments
+ * negative dollar amounts).
+ * A transaction contains the following information: the date and time of its processing, a
+ * description of the type of deposit or (for payments) the item purchased, the name of the
+ * depositor or vendor, and the dollar amount deposited or paid.
+ * A transaction displayed is in the following format:
+ * date|time|description|vendor|amount
  *
  * @author Ravi Spigner
  */
 public class Transaction {
-    //private LocalDate date;
     private LocalDateTime dateTime;
     private String description;
     private String depositorOrVendorName;
     private double amount;
-    //private boolean isPayment; //negative amounts are payments
 
     public Transaction() {
         this.dateTime = LocalDateTime.now();
