@@ -13,7 +13,10 @@ import java.util.ArrayList;
  * This ledger manages (stores & manipulates) transactions.
  * Transactions, which are of 2 categories: deposits (positive dollar amounts) and payments
  * (negative dollar amounts) in the ledger can be created, displayed (in multiple date ranges)
- * and written to a file.
+ * and written to a file. Transactions written to the file include the current user's name
+ * using the application, followed by their transactions. Transactions from previous users
+ * will also be stored to the file to help keep a log between different executions of
+ * the application.
  * A transaction displayed is in the following format:
  * date|time|description|vendor|amount
  *
