@@ -115,16 +115,16 @@ public class Menus {
 
             if (input.equals("1")) {
                 //Display Month-To-Date Transactions
-                ledger.displayTransactionsMonthToDate();
+                monthToDateTransactions();
             } else if (input.equals("2")) {
                 //Display Previous Month Transactions
-                ledger.displayTransactionsPreviousMonth();
+                previousMonthTransactions();
             } else if (input.equals("3")) {
                 //Display Year-To-Date Transactions
-                ledger.displayTransactionsYearToDate();
+                previousYearToDateTransactions();
             } else if (input.equals("4")) {
                 //Display Previous Year Transactions
-                ledger.displayTransactionsPreviousYear();
+                previousYearTransactions();
             } else if (input.equals("5")) {
                 //Search By Vendor
                 searchVendor();
