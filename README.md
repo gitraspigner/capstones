@@ -13,8 +13,7 @@
 Contains a collection of my capstone projects. <br>
 The PDF containing most of the workshop writeups from each week cannot be uploaded due to Pluralsight ownership rights. <br>
 But below you will find brief descriptions of each of the projects, which should give a better idea of their intended function and requirements. <br>
-The Javadoc-style class comments I've made for each of the java files developed for each capstone were designed to be descriptive enough to give the <br>
-the reader a good idea of their intended function and requirements as well.
+The Javadoc-style class comments I've made for each of the java files developed for each capstone were designed to be descriptive enough to give the reader a good idea of their intended function and requirements as well.
 
 #### 🕒 Commits History Here<br>
 [Click Here](https://github.com/gitraspigner/capstones/commits/master) <br>
