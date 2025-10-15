@@ -1,5 +1,4 @@
 package com.pluralsight.capstone1;
-
 /**
  * Simulates an Accounting Ledger application (ran from a command line interface).
  * A transaction is displayed in the following format:

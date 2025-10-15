@@ -1,10 +1,8 @@
 package com.pluralsight.capstone1;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Scanner;
-
 /**
  * Displays menus and gathers user input to simulate an Accounting Ledger application.
  * A non-empty username is required to display the menus and for the user to give input
@@ -16,18 +14,15 @@ public class Menus {
     private static final Scanner scanner = new Scanner(System.in);
     private static final Ledger ledger = new Ledger();
     private static final String filePath = "src/com/pluralsight/capstone1/";
-
     //ask to include test data (ranging from this year to a year ago)
     public static void askForTest1() {
         String input;
-
         while (true) {
             System.out.println("---Test Inputs?---");
             System.out.println("Would you like to include some test transactions that range " +
                     "from the current year to a little over a year ago?");
             System.out.print("Please enter an option (Y-Yes, N-No): ");
             input = scanner.nextLine().toUpperCase().trim();
-
             if (input.equals("Y")) {
                 ledger.addTest1();
                 break;
@@ -39,17 +34,13 @@ public class Menus {
                 System.out.println("Only a single letter (Y, N) entered is " +
                         "acceptable for your menu input");
                 System.out.println("-------------------");
-                continue;
             }
         }
     }
-
     public static void mainMenu() {
         String username;
         String input;
-
         displayWelcome();
-
         while (true) {
             System.out.print("Please enter your username: ");
             username = scanner.nextLine().trim();
@@ -61,15 +52,12 @@ public class Menus {
                 System.out.println("-------------------");
                 System.out.println("ERROR: Empty Username Entered");
                 System.out.println("-------------------");
-                continue;
             }
         }
         //populate the ledger with existing file data of transactions, if any
         ledger.buildLedgerFromFile(filePath, username);
         //ask to include test data (ranging from this year to a year ago)
         askForTest1();
-
-
         //begin main menu
         while (true) {
             System.out.println("---Main Menu---");
@@ -97,16 +85,12 @@ public class Menus {
                 System.out.println("Only a single letter (D, P, L, or X) entered is " +
                         "acceptable for your menu input");
                 System.out.println("-------------------");
-                continue;
             }
         }
     }
-
-
     public static void writeToFileUsername(String filePath, String username) {
         ledger.writeToFileUsername(filePath, username);
     }
-
     public static void ledger() {
         String input;
         while (true) {
@@ -137,11 +121,9 @@ public class Menus {
                 System.out.println("Only a single letter (A, D, P, R, or H) entered is " +
                         "acceptable for your menu input");
                 System.out.println("-------------------");
-                continue;
             }
         }
     }
-
     public static void reports() {
         String input;
         while (true) {
@@ -180,18 +162,15 @@ public class Menus {
                 System.out.println("Only a single number (1, 2, 3, 4, 5, or 6) entered is " +
                         "acceptable for your reports menu input");
                 System.out.println("-------------------");
-                continue;
             }
         }
     }
-
     public static void searchVendor() {
         System.out.println("---Vendor Search---");
         System.out.print("Please enter the name of the vendor to search: ");
         String input = scanner.nextLine().trim();
         ledger.displayVendorTransactions(input);
     }
-
     public static void customSearch() {
         System.out.println("---Custom Search---");
         System.out.println("Please enter the start date of the custom search:");
@@ -206,7 +185,6 @@ public class Menus {
             return;
         }
         LocalDate startDate = LocalDate.parse(startDateString);
-
         System.out.println("Please enter the start time of the custom search:");
         System.out.print("Proper Format: HH:mm:ss : ");
         String startTimeString = scanner.nextLine().trim();
@@ -219,7 +197,6 @@ public class Menus {
             return;
         }
         LocalTime startTime = LocalTime.parse(startTimeString);
-
         System.out.println("Please enter the end date of the custom search");
         System.out.print("Proper Format: yyyy-MM-dd: ");
         String endDateString = scanner.nextLine().trim();
@@ -232,7 +209,6 @@ public class Menus {
             return;
         }
         LocalDate endDate = LocalDate.parse(endDateString);
-
         System.out.println("Please enter the end time of the custom search:");
         System.out.print("Proper Format: HH:mm:ss : ");
         String endTimeString = scanner.nextLine().trim();
@@ -245,10 +221,8 @@ public class Menus {
             return;
         }
         LocalTime endTime = LocalTime.parse(endTimeString);
-
         LocalDateTime startDateTime = LocalDateTime.of(startDate, startTime);
         LocalDateTime endDateTime = LocalDateTime.of(endDate, endTime);
-
         System.out.print("Please enter the description of the custom search: ");
         String description = scanner.nextLine().trim();
         if (isNumber(description)) {
@@ -258,8 +232,7 @@ public class Menus {
             System.out.println("-------------------");
             return;
         }
-
-        System.out.print("Please enter the description of the custom search: ");
+        System.out.print("Please enter the vendor or name of the custom search: ");
         String vendorOrName = scanner.nextLine().trim();
         if (isNumber(vendorOrName)) {
             System.out.println("-------------------");
@@ -268,7 +241,6 @@ public class Menus {
             System.out.println("-------------------");
             return;
         }
-
         System.out.print("Please enter the upper limit (dollar) amount of the custom search: ");
         String upperAmountString = scanner.nextLine().trim();
         if (!isNumber(upperAmountString)) {
@@ -278,7 +250,6 @@ public class Menus {
             return;
         }
         double upperAmount = Double.parseDouble(upperAmountString);
-
         System.out.print("Please enter the lower limit (dollar) amount of the custom search: ");
         String lowerAmountString = scanner.nextLine().trim();
         if (!isNumber(lowerAmountString)) {
@@ -292,37 +263,30 @@ public class Menus {
         ledger.displayCustomTransactions(startDateTime, endDateTime, description, vendorOrName,
                 upperAmount, lowerAmount);
     }
-
     public static void monthToDateTransactions() {
         System.out.println("---Month To Date Transactions---");
         ledger.displayTransactionsMonthToDate();
     }
-
     public static void previousMonthTransactions() {
         System.out.println("---Month To Date Transactions---");
         ledger.displayTransactionsPreviousMonth();
     }
-
     public static void previousYearToDateTransactions() {
         System.out.println("---Month To Date Transactions---");
         ledger.displayTransactionsYearToDate();
     }
-
     public static void previousYearTransactions() {
         System.out.println("---Month To Date Transactions---");
         ledger.displayTransactionsPreviousYear();
     }
-
     public static void displayAllEntries() {
         System.out.println("---All Payments & Deposits---");
         ledger.displayAllTransactions();
     }
-
     public static void displayAllDeposits() {
         System.out.println("---All Deposits---");
         ledger.displayAllDeposits();
     }
-
     public static void displayAllPayments() {
         System.out.println("---All Payments---");
         ledger.displayAllPayments();
@@ -336,7 +300,6 @@ public class Menus {
             return false;
         }
     }
-
     //ask user for deposit input, then call Ledger's makeTransaction()
     public static void addDeposit() {
         String depositorName;
@@ -397,7 +360,6 @@ public class Menus {
             }
         }
     }
-
     //ask user for payment input, then call Ledger's makeTransaction()
     public static void makePayment() {
         String vendorName;
@@ -458,11 +420,9 @@ public class Menus {
             }
         }
     }
-
     public static void displayWelcome() {
         System.out.println("---Welcome To The Accounting Ledger App!---");
     }
-
     public static void displayGoodbye() {
         System.out.println("---Thank you!---");
         System.out.println("---See you next time!---");

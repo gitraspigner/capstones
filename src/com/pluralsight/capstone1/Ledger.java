@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-
 /**
  * Represents a ledger for a command-line-driven accounting ledger program.
  * This ledger manages (stores & manipulates) transactions.
@@ -29,15 +28,12 @@ import java.util.ArrayList;
  */
 public class Ledger {
     private final ArrayList<Transaction> ledger;
-
     public Ledger() {
         this.ledger = new ArrayList<>();
     }
-
     public Ledger(ArrayList<Transaction> ledger) {
         this.ledger = ledger;
     }
-
     public void addTest1() {
         //older transactions ordered oldest to most recent
         makeTransaction(LocalDateTime.now().minusYears(1).minusMonths(11),
@@ -63,7 +59,6 @@ public class Ledger {
         makeTransaction(LocalDateTime.now().minusMonths(1),
                 "TestTransaction-cash deposit", "Joe", 100); //deposit 1
     }
-
     public void displayCustomTransactions(LocalDateTime startDateTime, LocalDateTime endDateTime,
                                           String description, String vendorOrName,
                                           double upperAmount, double lowerAmount) {
@@ -88,7 +83,6 @@ public class Ledger {
             }
         }
     }
-
     public void displayAllTransactions() {
         for(Transaction t : ledger) {
             if (t.isTransaction()) {
@@ -96,7 +90,6 @@ public class Ledger {
             }
         }
     }
-
     public void displayAllDeposits() {
         for(Transaction t : ledger) {
             if (t.isTransaction() && t.getAmount() > 0.0) { //deposits only have positive amounts
@@ -105,7 +98,6 @@ public class Ledger {
 
         }
     }
-
     public void displayAllPayments() {
         for(Transaction t : ledger) {
             if (t.isTransaction() && t.getAmount() < 0.0) { //payments only have negative amounts
@@ -113,7 +105,6 @@ public class Ledger {
             }
         }
     }
-
     public void displayVendorTransactions(String vendorName) {
         for(Transaction t : ledger) {
             if(t.isTransaction() && t.getDepositorOrVendorName().equalsIgnoreCase(vendorName)) {
@@ -121,7 +112,6 @@ public class Ledger {
             }
         }
     }
-
     public ArrayList<Transaction> getTransactionsByDateRange(LocalDateTime start,
                                                               LocalDateTime end) {
         ArrayList<Transaction> filteredTransactions = new ArrayList<>();
@@ -133,7 +123,6 @@ public class Ledger {
         }
         return filteredTransactions;
     }
-
     //transactions from the start of the current month until now
     public void displayTransactionsMonthToDate() {
         LocalDateTime now = LocalDateTime.now();
@@ -147,7 +136,6 @@ public class Ledger {
             }
         }
     }
-
     //transactions from the start to the end of the entire previous calendar month
     public void displayTransactionsPreviousMonth() {
         //now -> first day of this month (at 12:00AM) -> first day of last month
@@ -163,7 +151,6 @@ public class Ledger {
             }
         }
     }
-
     //transactions from the start of the current year until now
     public void displayTransactionsYearToDate() {
         LocalDateTime now = LocalDateTime.now();
@@ -177,7 +164,6 @@ public class Ledger {
             }
         }
     }
-
     //transactions from start to end of entire previous calendar year
     public void displayTransactionsPreviousYear() {
         //now -> first day of this year (at 12:00AM) -> first day of last year
@@ -193,7 +179,6 @@ public class Ledger {
             }
         }
     }
-
     //uses current time for Transaction's dateTime
     //adds transaction to the top of (first element of the transaction list (ledger))
     public boolean makeTransaction(String description, String depositorOrVendorName,
@@ -206,7 +191,6 @@ public class Ledger {
             return false;
         }
     }
-
     //uses current time for Transaction's dateTime
     //adds transaction to the bottom of (last element of the transaction list (ledger))
     public boolean makeTransactionAtEnd(String description, String depositorOrVendorName,
@@ -219,7 +203,6 @@ public class Ledger {
             return false;
         }
     }
-
     //uses dateTime parameter for Transaction's dateTime
     //adds transaction to the top of (first element of the transaction list) ledger
     public boolean makeTransaction(LocalDateTime dateTime, String description,
@@ -232,7 +215,6 @@ public class Ledger {
             return false;
         }
     }
-
     //uses dateTime parameter for Transaction's dateTime
     //adds transaction to the bottom of (last element of the transaction list) (ledger)
     public boolean makeTransactionAtEnd(LocalDateTime dateTime, String description,
@@ -245,7 +227,6 @@ public class Ledger {
             return false;
         }
     }
-
     //uses dateTime parameter for Transaction's dateTime
     //adds user login as a transaction to the top of the transaction list (ledger)
     public boolean makeUserLogin(LocalDateTime dateTime, String username) {
@@ -257,7 +238,6 @@ public class Ledger {
             return false;
         }
     }
-
     //uses dateTime parameter for Transaction's dateTime
     //adds user login as a transaction to the top of the transaction list (ledger)
     public boolean makeUserLoginAtEnd(LocalDateTime dateTime, String username) {
@@ -269,7 +249,6 @@ public class Ledger {
             return false;
         }
     }
-
     public static boolean isNumber(String input) {
         try {
             Double.parseDouble(input); //will return true for doubles/decimals and ints
@@ -278,7 +257,6 @@ public class Ledger {
             return false;
         }
     }
-
     public static boolean isDate(String input) {
         try {
             LocalDate.parse(input);
@@ -287,7 +265,6 @@ public class Ledger {
             return false;
         }
     }
-
     public static boolean isTime(String input) {
         try {
             LocalTime.parse(input);
@@ -296,8 +273,6 @@ public class Ledger {
             return false;
         }
     }
-
-
     //read through file (if it exists) and build ledger including all transactions, also include user logins
     public void buildLedgerFromFile(String filePath, String username) {
         String userFilenamePath = filePath+"transactions-"+ username +".csv";
@@ -333,7 +308,6 @@ public class Ledger {
                         continue; //skip the line
                     }
                     LocalDate date = LocalDate.parse(transactionData[0]);
-
                     timeString = transactionData[1];
                     if (!isTime(timeString)) {
                         System.out.println("-------------------");
@@ -360,7 +334,6 @@ public class Ledger {
                                                              //to create a user login transaction
                         continue; //after creating new user login as transaction, skip rest of line
                     }
-
                     vendorOrName = transactionData[3];
                     if (isNumber(vendorOrName)) {
                         System.out.println("-------------------");
@@ -389,7 +362,6 @@ public class Ledger {
             makeUserLogin(LocalDateTime.now(), username);
         }
     }
-
     public void writeToFileUsername(String filePath, String username) {
         String userFilenamePath = filePath+"transactions-"+ username +".csv";
             //this syntax for the try block
@@ -412,4 +384,5 @@ public class Ledger {
                 System.out.println("-------------------");
             }
     }
+
 }
