@@ -64,6 +64,31 @@ public class Ledger {
                 "TestTransaction-cash deposit", "Joe", 100); //deposit 1
     }
 
+    public void displayCustomTransactions(LocalDateTime startDateTime, LocalDateTime endDateTime,
+                                          String description, String vendorOrName,
+                                          double upperAmount, double lowerAmount) {
+        for(Transaction t : ledger) {
+            //checks if transaction is not user login, description is same,
+            //and vendorOrName is same, within upper and lower amount limits,
+            //and within start and end date/time limits
+            if (t.isTransaction() &&
+                    //description same
+                    (t.getDescription().equalsIgnoreCase(description) ||
+                        t.getDescription().toLowerCase().contains(description.toLowerCase())) &&
+                    //vendor or name same
+                    (t.getDepositorOrVendorName().equalsIgnoreCase(vendorOrName) ||
+                            t.getDepositorOrVendorName().toLowerCase().contains(
+                            vendorOrName.toLowerCase())) &&
+                    //amount within bounds
+                    t.getAmount() <= upperAmount && t.getAmount() >= lowerAmount &&
+                    //date & time within bounds
+                    t.getDateTime().isAfter(startDateTime) &&
+                    t.getDateTime().isBefore(endDateTime)) {
+                System.out.println(t);
+            }
+        }
+    }
+
     public void displayAllTransactions() {
         for(Transaction t : ledger) {
             if (t.isTransaction()) {
