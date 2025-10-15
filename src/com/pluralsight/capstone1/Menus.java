@@ -1,5 +1,8 @@
 package com.pluralsight.capstone1;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 /**
@@ -144,9 +147,9 @@ public class Menus {
         while (true) {
             System.out.println("---Reports---");
                 System.out.print("Please enter an option (1-Display Month-To-Date Transactions, " +
-                    "2-Display Previous Month Transactions, 3-Display Year-To-Date Transactions,\n" +
-                        " 4-Display Previous Year Transactions, 5-Search By Vendor, 6-Go Back To " +
-                        "The Ledger Page): ");
+                    "2-Display Previous Month Transactions, 3-Display Year-To-Date " +
+                        "Transactions,\n 4-Display Previous Year Transactions, 5-Search By " +
+                        "Vendor, 6-Custom Search, 7-Go Back To The Ledger Page): ");
             input = scanner.nextLine().toUpperCase().trim();
 
             if (input.equals("1")) {
@@ -165,6 +168,10 @@ public class Menus {
                 //Search By Vendor
                 searchVendor();
             } else if (input.equals("6")) {
+                //Custom search
+                //TODO: Add custom search
+                customSearch();
+            } else if (input.equals("7")) {
                 //Exit back to the home screen
                 break;
             }else {
@@ -179,10 +186,111 @@ public class Menus {
     }
 
     public static void searchVendor() {
-            System.out.println("---Vendor Search---");
-            System.out.print("Please enter the name of the vendor to search: ");
-            String input = scanner.nextLine().trim();
-            ledger.displayVendorTransactions(input);
+        System.out.println("---Vendor Search---");
+        System.out.print("Please enter the name of the vendor to search: ");
+        String input = scanner.nextLine().trim();
+        ledger.displayVendorTransactions(input);
+    }
+
+    public static void customSearch() {
+        System.out.println("---Custom Search---");
+        System.out.println("Please enter the start date of the custom search:");
+        System.out.print("Proper Format: (yyyy-MM-dd): ");
+        String startDateString = scanner.nextLine().trim();
+        //if statement test + break
+        if (!Ledger.isDate(startDateString)) {
+            System.out.println("-------------------");
+            System.out.println("ERROR: " + startDateString + " is not a valid date");
+            System.out.println("Proper Format: yyyy-MM-dd");
+            System.out.println("-------------------");
+            return;
+        }
+        LocalDate startDate = LocalDate.parse(startDateString);
+
+        System.out.println("Please enter the start time of the custom search:");
+        System.out.print("Proper Format: HH:mm:ss : ");
+        String startTimeString = scanner.nextLine().trim();
+        //if statement test + break
+        if (!Ledger.isTime(startTimeString)) {
+            System.out.println("-------------------");
+            System.out.println("ERROR: " + startTimeString + " is not a valid time");
+            System.out.println("Proper Format: HH:mm:ss");
+            System.out.println("-------------------");
+            return;
+        }
+        LocalTime startTime = LocalTime.parse(startTimeString);
+
+        System.out.println("Please enter the end date of the custom search");
+        System.out.print("Proper Format: yyyy-MM-dd: ");
+        String endDateString = scanner.nextLine().trim();
+        //if statement test + break
+        if (!Ledger.isDate(endDateString)) {
+            System.out.println("-------------------");
+            System.out.println("ERROR: " + endDateString + " is not a valid date");
+            System.out.println("Proper Format: yyyy-MM-dd");
+            System.out.println("-------------------");
+            return;
+        }
+        LocalDate endDate = LocalDate.parse(endDateString);
+
+        System.out.println("Please enter the end time of the custom search:");
+        System.out.print("Proper Format: HH:mm:ss : ");
+        String endTimeString = scanner.nextLine().trim();
+        //if statement test + break
+        if (!Ledger.isTime(endTimeString)) {
+            System.out.println("-------------------");
+            System.out.println("ERROR: " + endTimeString + " is not a valid time");
+            System.out.println("Proper Format: HH:mm:ss");
+            System.out.println("-------------------");
+            return;
+        }
+        LocalTime endTime = LocalTime.parse(endTimeString);
+
+        LocalDateTime startDateTime = LocalDateTime.of(startDate, startTime);
+        LocalDateTime endDateTime = LocalDateTime.of(endDate, endTime);
+
+        System.out.print("Please enter the description of the custom search: ");
+        String description = scanner.nextLine().trim();
+        if (isNumber(description)) {
+            System.out.println("-------------------");
+            System.out.println("ERROR: " + description + " is a number, not a " +
+                    "description (consisting of words)");
+            System.out.println("-------------------");
+            return;
+        }
+
+        System.out.print("Please enter the description of the custom search: ");
+        String vendorOrName = scanner.nextLine().trim();
+        if (isNumber(vendorOrName)) {
+            System.out.println("-------------------");
+            System.out.println("ERROR: " + vendorOrName + " is a number, not a " +
+                    "vendor or name (consisting of words)");
+            System.out.println("-------------------");
+            return;
+        }
+
+        System.out.print("Please enter the upper limit (dollar) amount of the custom search: ");
+        String upperAmountString = scanner.nextLine().trim();
+        if (!isNumber(upperAmountString)) {
+            System.out.println("-------------------");
+            System.out.println("ERROR: " + upperAmountString + " is not a number");
+            System.out.println("-------------------");
+            return;
+        }
+        double upperAmount = Double.parseDouble(upperAmountString);
+
+        System.out.print("Please enter the lower limit (dollar) amount of the custom search: ");
+        String lowerAmountString = scanner.nextLine().trim();
+        if (!isNumber(lowerAmountString)) {
+            System.out.println("-------------------");
+            System.out.println("ERROR: " + lowerAmountString + " is not a number");
+            System.out.println("-------------------");
+            return;
+        }
+        double lowerAmount = Double.parseDouble(lowerAmountString);
+        System.out.println("---Custom Search Results Transactions---");
+        ledger.displayCustomTransactions(startDateTime, endDateTime, description, vendorOrName,
+                upperAmount, lowerAmount);
     }
 
     public static void monthToDateTransactions() {
