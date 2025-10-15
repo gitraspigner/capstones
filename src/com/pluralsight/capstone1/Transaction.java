@@ -10,8 +10,11 @@ import java.time.format.DateTimeFormatter;
  * A transaction contains the following information: the date and time of its processing, a
  * description of the type of deposit or (for payments) the item purchased, the name of the
  * depositor or vendor, and the dollar amount deposited or paid.
- * A transaction displayed is in the following format:
+ * A transaction is displayed in the following format:
  * date|time|description|vendor|amount
+ * And are stored in the following filepath/filename:
+ * src/com/pluralsight/capstone1/transactions-[username].csv
+ * which can be edited within the Menus class via the filePath variable.
  *
  * @author Ravi Spigner
  */
@@ -28,7 +31,8 @@ public class Transaction {
         this.amount = 0.0;
     }
 
-    public Transaction(LocalDateTime dateTime, String description, String depositorOrVendorName, double amount) {
+    public Transaction(LocalDateTime dateTime, String description, String depositorOrVendorName,
+                       double amount) {
         this.dateTime = dateTime;
         this.description = description;
         this.depositorOrVendorName = depositorOrVendorName;
@@ -45,6 +49,14 @@ public class Transaction {
                 + description + "|"
                 + depositorOrVendorName + "|"
                 + amount;
+    }
+
+    public boolean isTransaction() {
+        return !getDescription().contains("***new user login");
+    }
+
+    public boolean isTestTransaction() {
+        return getDescription().contains("TestTransaction");
     }
 
     public LocalDateTime getDateTime() {
