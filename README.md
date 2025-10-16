@@ -18,6 +18,9 @@ The Javadoc-style class comments I've made for each of the java files developed 
 #### 🕒 Commits History Here<br>
 [Click Here](https://github.com/gitraspigner/capstones/commits/master) <br>
 
+#### 📋 Project Board Here<br>
+[Click Here](https://github.com/users/gitraspigner/projects/3) <br>
+
 ### 💭 Capstone(s) Detailed: <br>
 #### Capstone 1
 - **Capstone Title:** Accounting Ledger (Command Line Application)
@@ -40,13 +43,13 @@ The Javadoc-style class comments I've made for each of the java files developed 
     - Malformed Data Removed By Application (screenshot of transactions file after executing application) <br>
     ![malformedDataRemovedAfterExecution.png](src/com/pluralsight/capstone1/Screenshots/malformedDataRemovedAfterExecution.png)
 
-      
-  - **Interesting Code Snippet:** -In Progress-
-    - **Snippet:**
-    - ![codeSnippetBuildLedgerFromFile.png](src/com/pluralsight/capstone1/Screenshots/codeSnippetBuildLedgerFromFile.png)
+  - **Interesting Code Snippet:**
+    - **Snippet:** <br>
+    ![codeSnippetBuildLedgerFromFile.png](src/com/pluralsight/capstone1/Screenshots/codeSnippetBuildLedgerFromFile.png)
     - **Why it's interesting:**
-    - 
-  - **Additional Thoughts:** -In Progress-
+    - Although I have chosen not to include the entire code for this method (buildLedgerFromFile() due to length), building the current ledger to use during a user's session was one of the most time-consuming parts of this application. The reason I've chosen to highlight this section out of all of my code, is that it does 3 things I am very proud of. The first of which, is that it reads a user file (if one exists for their username) and parses all of the data to create a ledger for the current session, which can be searched and sorted, meaning it includes data from all of the user's previous sessions. The second of which, is that it detects malformed file data, notifies the user of what data it is, and exactly where it appears in the file. And the third of which, is that it will remove the aforementioned malformed data from their transaction file, which helps keep the data stored clean, free of issues, and in a form that conserves space and money that would otherwise be spent on saving problematic data. 
+  - **Additional Thoughts:** 
+    - When it comes to (as mentioned in the rubric for this capstone) "tricking out" this application, some of the extra features I implemented were as follows: different users (usernames can be a first, last, or first and last name, or an email, or an employee ID number), test transactions being supported (largely implemented for demo purposes so I don't need to enter 10 unique transactions during my presentation) and these test transactions would not typically be used in a business setting, a rolling log file for each user which tracks their login and transactions added while preserving the order of most recent logins/transactions at the top of their log file, letting each user be able to access their transactions from all previous sessions from within their current session, notification to user of malformed file data, removing malformed file data, type checking for every input (whether user input or file data, where appropriate and giving consideration to what kinds of values should be allowed). I fell short of two goals I had for this project: to make javadoc comments for each method and class field/variable (although I was able to make javadoc comments for each class) and to implement OpenAI somehow in some area of the application. I think I met the requirements for this capstone and implemented multiple bonus features for additional credit (multiple users, custom search, optional test transactions (without having convered JUnit in this course, even though I've used it before)) so therefore I think I'm satisfied with my work. 
 ---
 #### Capstone 2
 - **Capstone Title:** -In Progress-
@@ -76,4 +79,4 @@ OpenAI. (2025). ChatGPT (Oct 1 version) [Large language model]. https://chatgpt.
 
 *I have to give credit where it's due, right?* <br>
 
-**Last Edited: 10/13/2025**
+**Last Edited: 10/16/2025**
