@@ -151,7 +151,6 @@ public class Menus {
                 searchVendor();
             } else if (input.equals("6")) {
                 //Custom search
-                //TODO: Add custom search
                 customSearch();
             } else if (input.equals("7")) {
                 //Exit back to the home screen
