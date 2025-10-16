@@ -355,7 +355,7 @@ public class Ledger {
                     makeTransactionAtEnd(dateTime, description, vendorOrName, amount);
                 }
             } catch (IOException e) {
-                System.out.println("No previous transactions log file to read for user.");
+                System.out.println("Error reading file (file may be unreadable or restricted).");
             }
             makeUserLogin(LocalDateTime.now(), username);
         } else {
