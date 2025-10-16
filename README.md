@@ -43,7 +43,7 @@ The Javadoc-style class comments I've made for each of the java files developed 
       
   - **Interesting Code Snippet:** -In Progress-
     - **Snippet:**
-    - 
+    - ![codeSnippetBuildLedgerFromFile.png](src/com/pluralsight/capstone1/Screenshots/codeSnippetBuildLedgerFromFile.png)
     - **Why it's interesting:**
     - 
   - **Additional Thoughts:** -In Progress-
