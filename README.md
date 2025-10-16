@@ -18,6 +18,9 @@ The Javadoc-style class comments I've made for each of the java files developed 
 #### 🕒 Commits History Here<br>
 [Click Here](https://github.com/gitraspigner/capstones/commits/master) <br>
 
+#### 📋 Project Board Here<br>
+[Click Here](https://github.com/users/gitraspigner/projects/3) <br>
+
 ### 💭 Capstone(s) Detailed: <br>
 #### Capstone 1
 - **Capstone Title:** Accounting Ledger (Command Line Application)
@@ -40,13 +43,13 @@ The Javadoc-style class comments I've made for each of the java files developed 
     - Malformed Data Removed By Application (screenshot of transactions file after executing application) <br>
     ![malformedDataRemovedAfterExecution.png](src/com/pluralsight/capstone1/Screenshots/malformedDataRemovedAfterExecution.png)
 
-      
-  - **Interesting Code Snippet:** -In Progress-
-    - **Snippet:**
-    - ![codeSnippetBuildLedgerFromFile.png](src/com/pluralsight/capstone1/Screenshots/codeSnippetBuildLedgerFromFile.png)
+  - **Interesting Code Snippet:**
+    - **Snippet:** <br>
+    ![codeSnippetBuildLedgerFromFile.png](src/com/pluralsight/capstone1/Screenshots/codeSnippetBuildLedgerFromFile.png)
     - **Why it's interesting:**
-    - 
-  - **Additional Thoughts:** -In Progress-
+    - -In Progress-
+  - **Additional Thoughts:** 
+    - -In Progress-
 ---
 #### Capstone 2
 - **Capstone Title:** -In Progress-
