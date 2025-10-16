@@ -23,21 +23,21 @@ The Javadoc-style class comments I've made for each of the java files developed 
 - **Capstone Title:** Accounting Ledger (Command Line Application)
   - **Description:** Simulates/is an Accounting Ledger application (ran from a command line interface). The user navigates a series of menus to accomplish different basic functions of the ledger which are primarily either creating new transactions (either adding a deposit or making a payment) or displaying a report/list of transactions (deposits, payments, or transactions from a range of time). This ledger manages (stores & manipulates) transactions according to the current user running the application's input from the command line and are all written to a file (which, for this program is called "transactions.csv"). Transactions are of 2 categories: deposits (positive dollar amounts) and payments (negative dollar amounts). A transaction contains the following information: the date and time of its processing, a description of the type of deposit or (for payments) the item purchased, the name of the depositor or vendor, and the dollar amount deposited or paid.
   - **Application Screens:** -In Progress-
-    - Welcome/Greeting, Main Menu Screen, Make Deposit & Make Payment Screens:
+    - Welcome/Greeting, Main Menu Screen, Make Deposit & Make Payment Screens: <br>
     ![welcomeMainMenuDepositAndPaymentScreens.png](src/com/pluralsight/capstone1/Screenshots/welcomeMainMenuDepositAndPaymentScreens.png)
-    - Ledger Menu Screen, All Transactions, All Deposits, and All Payments Screens:
+    - Ledger Menu Screen, All Transactions, All Deposits, and All Payments Screens: <br>
     ![ledgerMenuAllTransactionsAllDepositsAllPayments.png](src/com/pluralsight/capstone1/Screenshots/ledgerMenuAllTransactionsAllDepositsAllPayments.png)
-    - Reports Menu Screen, Vendor Search & Custom Search Screens:
+    - Reports Menu Screen, Vendor Search & Custom Search Screens: <br>
     ![reportsMenuVendorSearchCustomSearch.png](src/com/pluralsight/capstone1/Screenshots/reportsMenuVendorSearchCustomSearch.png)
-    - Multiple User Sessions Logged (Transactions from previous sessions are accessible):
+    - Multiple User Sessions Logged (Transactions from previous sessions are accessible): <br>
     ![bobL.TransactionsFile.MultipleSessions.png](src/com/pluralsight/capstone1/Screenshots/bobL.TransactionsFile.MultipleSessions.png)
-    - Different Files Created For Each User (usernames can be any kind of name (First&Last, First, Last, etc...) an Employee ID, or an Email):
+    - Different Files Created For Each User (usernames can be any kind of name (First&Last, First, Last, etc...) an Employee ID, or an Email): <br>
     ![differentFilesForDifferentUsernames.png](src/com/pluralsight/capstone1/Screenshots/differentFilesForDifferentUsernames.png)
-    - Malformed File Data
+    - Malformed File Data <br>
     ![malformedDataFile.png](src/com/pluralsight/capstone1/Screenshots/malformedDataFile.png)
-    - Malformed Data Warnings
+    - Malformed Data Warnings <br>
     ![malformedDataFileWarnings.png](src/com/pluralsight/capstone1/Screenshots/malformedDataFileWarnings.png)
-    - Malformed Data Removed By Application (screenshot of transactions file after executing application)
+    - Malformed Data Removed By Application (screenshot of transactions file after executing application) <br>
     ![malformedDataRemovedAfterExecution.png](src/com/pluralsight/capstone1/Screenshots/malformedDataRemovedAfterExecution.png)
 
       
