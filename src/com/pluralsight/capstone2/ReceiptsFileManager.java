@@ -36,8 +36,9 @@ import java.time.format.DateTimeFormatter;
  * @author Ravi Spigner
  */
 public class ReceiptsFileManager {
-    public static void writeToReceipts(String filePath) {
-        String receiptsFilePath = Menus.filePath;
+    private static final String receiptsFilePath = Menus.filePath;
+    public static void writeToReceipts() {
+        String oldFileContents = "";
         //this syntax for the try block
         try (BufferedWriter bufferedWriter = new BufferedWriter(
                 new FileWriter(receiptsFilePath, true))) {
@@ -52,7 +53,7 @@ public class ReceiptsFileManager {
             bufferedWriter.write("---------------------------");
             bufferedWriter.newLine();
             for (Order o : Menus.orders) {
-                // Write order details without extra headers
+                //write order
                 bufferedWriter.write("-Order Number: " + o.getOrderNumber() + ", Order Name: " +
                         o.getOrderName());
                 bufferedWriter.newLine();
@@ -98,98 +99,36 @@ public class ReceiptsFileManager {
         } catch (IOException e) {
             System.out.println("-------------------");
             System.out.println("ERROR: Invalid file path " +
-                    filePath); //could not write to file, possible invalid filepath
+                    receiptsFilePath); //could not write to file, possible invalid filepath
             System.out.println("-------------------");
         }
     }
+    public static double getTotalRevenuePreviousSessions() {
+        double totalRevenue = 0.0;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(receiptsFilePath))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                //if line contains total order price "Total Order Price:"
+                if (line.trim().startsWith("Total Order Price:")) {
+                    try {
+                        //get Total Order Price and add to totalrevenue
+                        String priceStr = line.substring(line.indexOf('$') + 1).trim();
+                        double price = Double.parseDouble(priceStr);
+                        totalRevenue += price;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid price line: " + line);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("-------------------");
+            System.out.println("No existing recepts file at: " + receiptsFilePath);
+            System.out.println("This might be your first time running this program, " +
+                    "so that's ok!");
+            System.out.println("-------------------");
+        }
+        return totalRevenue;
+    }
 
-//read through file (if it exists) and build total revenue
-//    public void buildTotalRevenueFromFile(String filePath, String username) {
-//        String userFilenamePath = filePath+"receipts-"+ username +".csv";
-//        //read user file only if it exists
-//        if (Files.exists(Path.of(userFilenamePath))) {
-//            try (BufferedReader reader = new BufferedReader(new FileReader(userFilenamePath))) {
-//                String line;
-//                String dateString;
-//                String timeString;
-//                String description;
-//                String vendorOrName;
-//                String amountString;
-//                String[] transactionData;
-//                int lineNumber = 0;
-//                while ((line = reader.readLine()) != null) {
-//                    lineNumber++;
-//                    transactionData = line.split("\\|");
-//                    if (transactionData.length != 5) {
-//                        System.out.println("-------------------");
-//                        System.out.println("ERROR: Invalid line (format) found: " + line);
-//                        System.out.println("Must have 5 components separated by '|' character");
-//                        System.out.println("File Line Number: " + lineNumber);
-//                        System.out.println("-------------------");
-//                        continue; //skip the line and keep reading, may as well
-//                    }
-//                    dateString = transactionData[0];
-//                    if (!isDate(dateString)) {
-//                        System.out.println("-------------------");
-//                        System.out.println("ERROR: " + dateString + " is not a valid date");
-//                        System.out.println("Proper Format: yyyy-MM-dd");
-//                        System.out.println("File Line Number: " + lineNumber);
-//                        System.out.println("-------------------");
-//                        continue; //skip the line
-//                    }
-//                    LocalDate date = LocalDate.parse(transactionData[0]);
-//                    timeString = transactionData[1];
-//                    if (!isTime(timeString)) {
-//                        System.out.println("-------------------");
-//                        System.out.println("ERROR: " + timeString + " is not a valid time");
-//                        System.out.println("Proper Format: HH:mm:ss");
-//                        System.out.println("File Line Number: " + lineNumber);
-//                        System.out.println("-------------------");
-//                        continue; //skip the line
-//                    }
-//                    LocalTime time = LocalTime.parse(transactionData[1]);
-//                    LocalDateTime dateTime = LocalDateTime.of(date, time);
-//                    description = transactionData[2];
-//                    if (isNumber(description)) {
-//                        System.out.println("-------------------");
-//                        System.out.println("ERROR: " + description + " is a number, not a " +
-//                                "description (consisting of words)");
-//                        System.out.println("File Line Number: " + lineNumber);
-//                        System.out.println("-------------------");
-//                        continue; //skip the line
-//                    }
-//                    //check if the line/transaction we're viewing is a user login
-//                    if (line.contains("***new user login")) {
-//                        makeUserLoginAtEnd(dateTime, username); //only dateTime & username needed
-//                        //to create a user login transaction
-//                        continue; //after creating new user login as transaction, skip rest of line
-//                    }
-//                    vendorOrName = transactionData[3];
-//                    if (isNumber(vendorOrName)) {
-//                        System.out.println("-------------------");
-//                        System.out.println("ERROR: " + vendorOrName + " is a number, not a " +
-//                                "name (consisting of words)");
-//                        System.out.println("File Line Number: " + lineNumber);
-//                        System.out.println("-------------------");
-//                        continue; //skip the line
-//                    }
-//                    amountString = transactionData[4];
-//                    if (!isNumber(amountString)) {
-//                        System.out.println("-------------------");
-//                        System.out.println("ERROR: " + amountString + " is not a number");
-//                        System.out.println("File Line Number: " + lineNumber);
-//                        System.out.println("-------------------");
-//                        continue; //skip the line
-//                    }
-//                    double amount = Double.parseDouble(transactionData[4]);
-//                    makeTransactionAtEnd(dateTime, description, vendorOrName, amount);
-//                }
-//            } catch (IOException e) {
-//                System.out.println("Error reading file (file may be unreadable or restricted).");
-//            }
-//            makeUserLogin(LocalDateTime.now(), username);
-//        } else {
-//            makeUserLogin(LocalDateTime.now(), username);
-//        }
-//    }
+
 }
