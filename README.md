@@ -24,7 +24,8 @@ The Javadoc-style class comments I've made for each of the java files developed 
 ### 💭 Capstone(s) Detailed: <br>
 #### Capstone 1
 - **Capstone Title:** Accounting Ledger (Command Line Application)
-  - **Description:** Simulates/is an Accounting Ledger application (ran from a command line interface). The user navigates a series of menus to accomplish different basic functions of the ledger which are primarily either creating new transactions (either adding a deposit or making a payment) or displaying a report/list of transactions (deposits, payments, or transactions from a range of time). This ledger manages (stores & manipulates) transactions according to the current user running the application's input from the command line and are all written to a file (which, for this program is called "transactions.csv"). Transactions are of 2 categories: deposits (positive dollar amounts) and payments (negative dollar amounts). A transaction contains the following information: the date and time of its processing, a description of the type of deposit or (for payments) the item purchased, the name of the depositor or vendor, and the dollar amount deposited or paid.
+  - **Description:** Simulates/is an Accounting Ledger application (ran from a command line interface). <br>
+The user (typically an employee of the firm) navigates a series of menus to accomplish different basic functions of the ledger which are primarily either creating new transactions (either adding a deposit or making a payment) or displaying a report/list of transactions (deposits, payments, or transactions from a range of time). This ledger manages (stores & manipulates) transactions according to the current user running the application's input from the command line and are all written to a file (which, for this program is called "transactions.csv"). Transactions are of 2 categories: deposits (positive dollar amounts) and payments (negative dollar amounts). A transaction contains the following information: the date and time of its processing, a description of the type of deposit or (for payments) the item purchased, the name of the depositor or vendor, and the dollar amount deposited or paid.
   - **Application Screens:**
     - Welcome/Greeting, Main Menu Screen, Make Deposit & Make Payment Screens: <br>
     ![welcomeMainMenuDepositAndPaymentScreens.png](src/com/pluralsight/capstone1/Screenshots/welcomeMainMenuDepositAndPaymentScreens.png)
@@ -53,7 +54,16 @@ The Javadoc-style class comments I've made for each of the java files developed 
 ---
 #### Capstone 2
 - **Capstone Title:** Sandwich Shop (Command Line Application)
-  - **Description:** Simulates a Sandwich Shop application (ran from a command line interface).
+  - **Description:** Simulates a Sandwich Shop application (ran from a command line interface). <br>
+The user (typically an employee of the shop) navigates a series of menus to accomplish basic order-related tasks of a sandwich shop. <br>
+These tasks include creating a new order (with an order name) that consists of a series of items (either Sandwich, Chip, or Drink). <br>
+Sandwiches can have multiple toppings, Chips are only offered of one size (Regular). Drinks and Sandwiches are offered of one of three <br>
+sizes: Small, Medium, or Large. For Sandwiches, Meat & Cheese toppings each have a charge based off of the size of the Sandwich, <br>
+and if the topping is an extra helping or not. Other toppings (which include Veggies and Sauces) have no charge for them. <br>
+A user may also display reports including the current receipts/transactions of the day, and the total revenue from all previous user sessions. <br>
+All receipts are written to a file (which, for this program is called "receipts.csv"). Each user session has its date recorded to the receipts file. <br> 
+All orders from that user session are recorded under the date of the user session, each order contains the name, order number <br>
+(which starts from order #001 for each user session), and the items of the order. <br>
   - **Application Screens:** -In Progress-
   - **Interesting Code Snippet:** -In Progress-
     - **Snippet:** -In Progress-
