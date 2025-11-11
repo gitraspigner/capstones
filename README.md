@@ -52,13 +52,16 @@ The Javadoc-style class comments I've made for each of the java files developed 
     - When it comes to (as mentioned in the rubric for this capstone) "tricking out" this application, some of the extra features I implemented were as follows: different users (usernames can be a first, last, or first and last name, or an email, or an employee ID number), test transactions being supported (largely implemented for demo purposes so I don't need to enter 10 unique transactions during my presentation) and these test transactions would not typically be used in a business setting, a rolling log file for each user which tracks their login and transactions added while preserving the order of most recent logins/transactions at the top of their log file, letting each user be able to access their transactions from all previous sessions from within their current session, notification to user of malformed file data, removing malformed file data, type checking for every input (whether user input or file data, where appropriate and giving consideration to what kinds of values should be allowed). I fell short of two goals I had for this project: to make javadoc comments for each method and class field/variable (although I was able to make javadoc comments for each class) and to implement OpenAI somehow in some area of the application. I think I met the requirements for this capstone and implemented multiple bonus features for additional credit (multiple users, custom search, optional test transactions (without having convered JUnit in this course, even though I've used it before)) so therefore I think I'm satisfied with my work. 
 ---
 #### Capstone 2
-- **Capstone Title:** -In Progress-
-  - **Description:** -In Progress-
+- **Capstone Title:** Sandwich Shop (Command Line Application)
+  - **Description:** Simulates a Sandwich Shop application (ran from a command line interface).
   - **Application Screens:** -In Progress-
   - **Interesting Code Snippet:** -In Progress-
     - **Snippet:** -In Progress-
-    - **Why it's interesting:** -In Progress-
-  - **Additional Thoughts:** -In Progress-
+```java
+
+```
+   - **Why it's interesting:** -In Progress-
+   - **Additional Thoughts:** -In Progress-
 ---
 #### Capstone 3
  - **Capstone Title:** -In Progress-
