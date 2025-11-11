@@ -12,8 +12,7 @@ import java.util.Scanner;
 public class Menus {
     private static final Scanner scanner = new Scanner(System.in);
     public static final List<Order> orders = new ArrayList<Order>();
-    //TODO: totalRevenue
-    //private static double totalRevenue = 0.0;
+    private static double totalRevenue = 0.0;
     private static int currentOrderNumber = 1;
     public static final String filePath = "src/com/pluralsight/capstone2/receipts.csv";
     public static void displayWelcome() {
@@ -26,12 +25,11 @@ public class Menus {
     public static void mainMenu() {
         String input;
         displayWelcome();
-        //TODO: populating day transactions would go here
+        totalRevenue = ReceiptsFileManager.getTotalRevenuePreviousSessions();
         //begin main menu
         while (true) {
             System.out.println("---Main Menu---");
-            System.out.println("Please enter a Main Menu option: (1-New Order, 2-Display Orders)");
-            System.out.print("(or 3-Exit): ");
+            System.out.print("Please enter a Main Menu option: (1-New Order, 2-Display, 3-Exit): ");
             input = scanner.nextLine().trim();
             //verify menu option is a number
             if (!isNumber(input)) {
@@ -77,11 +75,28 @@ public class Menus {
                     }
                 }
             } else if (input.equals("2")) {
-                //Display all orders
-                displayOrders();
+                while (true) {
+                    System.out.print("Display (1-Orders, 2-Total Revenue Of Previous Sessions, " +
+                            "3-Exit to Main Menu): ");
+                    input = scanner.nextLine().trim();
+                    if (!isNumber(input)) {
+                        errorMessageNumber(input, true);
+                        continue;
+                    }
+                    if (input.equals("1")) {
+                        displayOrders();
+                    } else if (input.equals("2")) {
+                        displayTotalRevenue();
+                    } else if (input.equals("3")) {
+                        break;
+                    } else {
+                        errorMessage(input, "Is An Invalid Menu Option. Only 1 or 2 is " +
+                                "acceptable for your menu input");
+                    }
+                }
             } else if (input.equals("3")) {
                 //Exit program
-                ReceiptsFileManager.writeToReceipts(filePath);
+                ReceiptsFileManager.writeToReceipts();
                 displayGoodbye();
                 break;
             } else {
@@ -92,7 +107,7 @@ public class Menus {
     }
     public static Order addNewOrder(String name) {
         Order newOrder = new Order(name, currentOrderNumber);
-        orders.add(newOrder);
+        orders.add(0, newOrder);
         currentOrderNumber++;
         System.out.println("---New Order Added---");
         return newOrder;
@@ -134,6 +149,7 @@ public class Menus {
                     System.out.println("---No Drink Added---).");
                 }
             } else if (input.equals("4")) {
+                System.out.println("---Order Checkout Complete---");
                 return;
             } else {
                 errorMessage(input, "Is An Invalid Menu Option. Only a single number " +
@@ -163,6 +179,12 @@ public class Menus {
                 .findFirst()
                 .orElse(null);
     }
+
+    public static void displayTotalRevenue() {
+        System.out.println("----Total Revenue----");
+        System.out.printf("$%.2f", totalRevenue);
+        System.out.println();
+    }
     public static void displayOrders() {
         if (orders.isEmpty()) {
             System.out.println("No orders for the day found");
@@ -182,8 +204,6 @@ public class Menus {
             }
         });
     }
-
-
     public static List<Order> getAllOrders() {
         return orders.stream().toList();
     }
