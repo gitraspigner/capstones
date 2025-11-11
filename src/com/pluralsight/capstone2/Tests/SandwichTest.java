@@ -1,7 +1,7 @@
 package com.pluralsight.capstone2.Tests;
 import static org.junit.jupiter.api.Assertions.*;
 /**
- * Tests for Sandwich Class.
+ * Tests for Sandwich class, also tests the Topping class.
  *
  * @author Ravi Spigner
  */
