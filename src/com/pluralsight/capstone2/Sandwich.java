@@ -22,16 +22,6 @@ public class Sandwich extends Item {
     //TODO: use this toppings thing, maybe make an extra constructor
     private ArrayList<Topping> toppings;
     private String breadType;
-    public Sandwich(String name, String size, String breadType, ArrayList<Topping> toppings) {
-        super(name, size,
-            size.equalsIgnoreCase(sizes.get(0)) ? 5.50 :
-            size.equalsIgnoreCase(sizes.get(1)) ? 7.00 :
-            size.equalsIgnoreCase(sizes.get(2)) ? 8.50 :
-            5.50 //default price is small for unrecognizable size argument that made it this far
-        );
-        this.breadType = breadType;
-        this.toppings = toppings;
-    }
     public Sandwich(String name, String size, String breadType) {
         super(name, size,
                 size.equalsIgnoreCase(sizes.get(0)) ? 5.50 :
