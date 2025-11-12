@@ -29,7 +29,7 @@ public class Menus {
         //begin main menu
         while (true) {
             System.out.println("---Main Menu---");
-            System.out.print("Please enter a Main Menu option: (1-New Order, 2-Display, 3-Exit): ");
+            System.out.print("-Please enter a Main Menu option: (1-New Order, 2-Display, 3-Exit): ");
             input = scanner.nextLine().trim();
             //verify menu option is a number
             if (!isNumber(input)) {
@@ -40,7 +40,7 @@ public class Menus {
                 //New Order
                 String orderName;
                 while (true) {
-                    System.out.print("Please enter your a name for your order: ");
+                    System.out.print("-Please enter your a name for your order: ");
                     orderName = scanner.nextLine().trim();
                     //check name not number
                     if (isNumber(orderName)) {
@@ -58,7 +58,7 @@ public class Menus {
                 Order currentOrder = addNewOrder(orderName);
                 //New Item
                 while (true) {
-                    System.out.print("Add an item? (1-Yes, 2-No): ");
+                    System.out.print("-Add an item? (1-Yes, 2-No): ");
                     input = scanner.nextLine().trim();
                     if (!isNumber(input)) {
                         errorMessageNumber(input, true);
@@ -76,7 +76,7 @@ public class Menus {
                 }
             } else if (input.equals("2")) {
                 while (true) {
-                    System.out.print("Display (1-Orders, 2-Total Revenue Of Previous Sessions, " +
+                    System.out.print("-Display (1-Orders, 2-Total Revenue Of Previous Sessions, " +
                             "3-Exit to Main Menu): ");
                     input = scanner.nextLine().trim();
                     if (!isNumber(input)) {
@@ -107,7 +107,7 @@ public class Menus {
     }
     public static Order addNewOrder(String name) {
         Order newOrder = new Order(name, currentOrderNumber);
-        orders.add(0, newOrder);
+        orders.add(newOrder);
         currentOrderNumber++;
         System.out.println("---New Order Added---");
         return newOrder;
@@ -118,7 +118,7 @@ public class Menus {
             System.out.println("---Add New Item To Order Number: " + order.getOrderNumber() +
                     " for Name: " + order.getOrderName() + "---");
             String input;
-            System.out.print("Enter an option for the type of item you'd like to add: ");
+            System.out.print("-Enter an option for the type of item you'd like to add: ");
             System.out.println();
             System.out.print("(1-Sandwich, 2-Chips, 3-Drink) ");
             System.out.println();
@@ -192,7 +192,7 @@ public class Menus {
         }
         System.out.println("----All Orders----");
         orders.stream().forEach(o -> {
-            System.out.println("-Order Number: " + o.getOrderNumber() +
+            System.out.println("---Order Number: " + o.getOrderNumber() +
                     ", Order Name: " + o.getOrderName());
             if (o.getItems().isEmpty()) {
                 System.out.println("No Items Found");
@@ -234,7 +234,7 @@ public class Menus {
         String chipChoice;
         while (true) {
             //display chip options
-            System.out.print("Enter an option for the type of chip you want: ");
+            System.out.print("-Enter an option for the type of chip you want: ");
             System.out.println();
             List<String> chipOptions = Chip.getOptions();
             displayItemOptions(chipOptions);
@@ -280,7 +280,7 @@ public class Menus {
         while (true) {
             String drinkSize;
             //display drink size options
-            System.out.print("Enter an option for the size of the drink: ");
+            System.out.print("-Enter an option for the size of the drink: ");
             System.out.println();
             List<String> sizeOptions = Drink.getSizes();
             displayItemOptions(sizeOptions);
@@ -306,7 +306,7 @@ public class Menus {
                 continue;
             }
             //display drink type options
-            System.out.println("Enter an option for the type of drink you want: ");
+            System.out.println("-Enter an option for the type of drink you want: ");
             List<String> drinkOptions = Drink.getOptions();
             displayItemOptions(drinkOptions);
             System.out.println();
@@ -357,12 +357,12 @@ public class Menus {
             String sandwichSize;
             String breadType;
             //display sandwich size options
-            System.out.print("Enter an option for the size of the sandwich: ");
+            System.out.print("-Enter an option for the size of the sandwich: ");
             System.out.println();
             List<String> sizeOptions = Sandwich.getSizeOptions();
             displayItemOptions(sizeOptions);
             System.out.println();
-            System.out.print(" (or 4-Exit to Main Menu): ");
+            System.out.print("(or 4-Exit to Main Menu): ");
             //get sandwich size
             input = scanner.nextLine().trim();
             if (!isNumber(input)) {
@@ -383,11 +383,11 @@ public class Menus {
                 continue;
             }
             //display bread type options
-            System.out.println("Enter an option for the type of bread for your sandwich: ");
+            System.out.println("-Enter an option for the type of bread for your sandwich: ");
             List<String> breadOptions = Sandwich.getBreadOptions();
             displayItemOptions(breadOptions);
             System.out.println();
-            System.out.print(" (or 9-Exit To Main Menu): ");
+            System.out.print("(or 9-Exit To Main Menu): ");
             //get bread type
             input = scanner.nextLine().trim();
             if (!isNumber(input)) {
@@ -424,7 +424,7 @@ public class Menus {
                 String toppingType;
                 boolean wantExtraTopping;
                 //display topping types
-                System.out.println("Enter an option for the type of topping to add to " +
+                System.out.println("-Enter an option for the type of topping to add to " +
                         "your sandwich: ");
                 List<String> toppingTypes = Topping.getToppingTypes();
                 displayItemOptions(toppingTypes);
@@ -455,12 +455,12 @@ public class Menus {
                 //display topping options
                 if (toppingType.equals("Meat")) {
                     //display meat toppings
-                    System.out.println("Enter an option for the type of meat to add to " +
+                    System.out.println("-Enter an option for the type of meat to add to " +
                             "your sandwich: ");
                     List<String> meatOptions = Topping.getMeatOptions();
                     displayItemOptions(meatOptions);
                     System.out.println();
-                    System.out.print(" (or 8-Exit to Main Menu): ");
+                    System.out.print("(or 8-Exit to Main Menu): ");
                     //get meat topping
                     input = scanner.nextLine().trim();
                     if (!isNumber(input)) {
@@ -491,7 +491,7 @@ public class Menus {
                     }
                 } else if (toppingType.equals("Veggie")) {
                     //display veggie toppings
-                    System.out.println("Enter an option for the type of veggie to add to " +
+                    System.out.println("-Enter an option for the type of veggie to add to " +
                             "your sandwich: ");
                     List<String> veggieOptions = Topping.getVeggieOptions();
                     displayItemOptions(veggieOptions);
@@ -533,7 +533,7 @@ public class Menus {
                     }
                 } else if (toppingType.equals("Cheese")) {
                     //display cheese toppings
-                    System.out.println("Enter an option for the type of cheese to add to " +
+                    System.out.println("-Enter an option for the type of cheese to add to " +
                             "your sandwich:");
                     List<String> cheeseOptions = Topping.getCheeseOptions();
                     displayItemOptions(cheeseOptions);
@@ -567,7 +567,7 @@ public class Menus {
                     }
                 } else if (toppingType.equals("Sauce")) {
                     //display sauce topping options
-                    System.out.println("Enter an option for the type of sauce to add to " +
+                    System.out.println("-Enter an option for the type of sauce to add to " +
                             "your sandwich: ");
                     List<String> sauceOptions = Topping.getSauceOptions();
                     displayItemOptions(sauceOptions);
@@ -608,7 +608,7 @@ public class Menus {
                 }
                 //ask if user wants extra of topping
                 //display extra topping option
-                System.out.println("Do you want extra of this topping? (1-Yes, 2-No)");
+                System.out.println("-Do you want extra of this topping? (1-Yes, 2-No)");
                 System.out.print("(or 3-Cancel This Topping): ");
                 //get extra topping response
                 input = scanner.nextLine().trim();
