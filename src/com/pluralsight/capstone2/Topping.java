@@ -114,10 +114,10 @@ public class Topping {
     @Override
     public String toString() {
         if(isExtra) {
-            return "\t\tExtra Topping: " + toppingName +
+            return "\t\t\tExtra Topping: " + toppingName +
                     ", Price: $" + String.format("%.2f", getToppingPrice());
         } else {
-            return "\tTopping: " + toppingName +
+            return "\t\tTopping: " + toppingName +
                     ", Price: $" + String.format("%.2f", getToppingPrice());
         }
     }

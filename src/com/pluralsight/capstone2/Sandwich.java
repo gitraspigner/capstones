@@ -19,7 +19,6 @@ public class Sandwich extends Item {
             "Wrap:Whole Wheat Multigrain"
     ));
     //sandwich-specific extras
-    //TODO: use this toppings thing, maybe make an extra constructor
     private ArrayList<Topping> toppings;
     private String breadType;
     public Sandwich(String name, String size, String breadType) {

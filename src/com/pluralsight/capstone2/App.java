@@ -6,11 +6,11 @@ package com.pluralsight.capstone2;
  * MM-DD-YYYY
  * ---------------------------
  * -Order Number: [Number], Order Name: [Name]
- * Item: Sandwich: [Sandwich Name], Size: [Size], Base Price: $[Price]
- * 	Topping: [Topping Name], Price: $[Price]
- * 		Extra Topping: [Topping Name], Price: $[Price]
- * Item: Chips: [Chip Name], Price: $[Price]
- * Item: Drink: [Drink Name], Size: [Size], Price: $[Price]
+ *      Item: Sandwich: [Sandwich Name], Size: [Size], Base Price: $[Price]
+ * 	        Topping: [Topping Name], Price: $[Price]
+ * 		        Extra Topping: [Topping Name], Price: $[Price]
+ *      Item: Chips: [Chip Name], Price: $[Price]
+ *      Item: Drink: [Drink Name], Size: [Size], Price: $[Price]
  * Total Order Price: $[Price]
  * ...
  * ...
