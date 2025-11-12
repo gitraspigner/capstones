@@ -198,7 +198,7 @@ public class Menus {
                 System.out.println("No Items Found");
             } else {
                 o.getItems().forEach(item ->
-                        System.out.println("Item: " + item.toString())
+                        System.out.println("\tItem: " + item.toString())
                 );
                 System.out.println(o.totalPrice());
             }
