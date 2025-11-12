@@ -54,15 +54,15 @@ public class ReceiptsFileManager {
             bufferedWriter.newLine();
             for (Order o : Menus.orders) {
                 //write order
-                bufferedWriter.write("-Order Number: " + o.getOrderNumber() + ", Order Name: " +
+                bufferedWriter.write("---Order Number: " + o.getOrderNumber() + ", Order Name: " +
                         o.getOrderName());
                 bufferedWriter.newLine();
                 for (Item i : o.getItems()) {
                     if (i instanceof Sandwich) {
                         Sandwich s = (Sandwich) i;
                         bufferedWriter.write("Item: Sandwich: " + s.getItemName() +
-                                ", Size: " + s.getSize() + ", Base Price: $" + String.format("%.2f",
-                                s.getBasePrice()));
+                                ", Bread Type: " +s.getBreadType() + ", Size: " + s.getSize() +
+                                ", Base Price: $" + String.format("%.2f", s.getBasePrice()));
                         bufferedWriter.newLine();
                         for (Topping t : s.getToppings()) {
                             if (t.isExtra()) {
