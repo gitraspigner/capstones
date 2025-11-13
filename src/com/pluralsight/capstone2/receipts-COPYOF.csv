@@ -45,3 +45,26 @@ Total Order Price: $4.00
 ---Order Number: 1, Order Name: Fred Jones
 Item: Drink: Coke-Regular Size: Large-30oz Price: $3.00
 Total Order Price: $3.00
+---------------------------
+11-13-2025
+---------------------------
+---Order Number: 1, Order Name: Phil C.
+Item: Sandwich: Signature Sandwich-Grand Philly Cheesesteak, Bread Type: White, Size: Large-12inch, Base Price: $8.50
+	Topping: Steak, Price: $3.00
+		Extra Topping: Steak, Price: $1.50
+	Topping: American, Price: $2.25
+		Extra Topping: American, Price: $0.90
+	Topping: Onions, Price: $0.00
+	Total Sandwich Price: $16.15
+Total Order Price: $16.15
+---Order Number: 2, Order Name: Henny C.
+Item: Sandwich: Signature Sandwich-Large Chicken Club, Bread Type: White, Size: Large-12inch, Base Price: $8.50
+	Topping: Chicken, Price: $3.00
+	Topping: Bacon, Price: $3.00
+	Topping: Cheddar, Price: $2.25
+	Topping: Lettuce, Price: $0.00
+	Topping: Tomatoes, Price: $0.00
+	Topping: Mayonnaise, Price: $0.00
+	Topping: Mustard, Price: $0.00
+	Total Sandwich Price: $16.75
+Total Order Price: $16.75

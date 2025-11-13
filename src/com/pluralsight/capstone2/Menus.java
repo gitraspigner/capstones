@@ -379,6 +379,69 @@ public class Menus {
     public static Sandwich getSandwich() {
         System.out.println("---Add Sandwich---");
         String input;
+        while (true) {
+            //last-second extra credit feature added:
+            System.out.println("Would you like a Signature Sandwich?:");
+            System.out.println("Option 1: (1-Grand Philly Cheesesteak (Extra Steak, Extra American " +
+                    "Cheese, Extra Onions))");
+            System.out.println("Option 2: (2-Large Chicken Club (Chicken, Bacon, Cheddar " +
+                    "Cheese, Lettuce, Tomatoes, " +
+                    "Mayonnaise, Mustard))");
+            System.out.print("(3-No, A Custom Sandwich (or 4-Exit to Main Menu)): ");
+            input = scanner.nextLine();
+            if (!isNumber(input)) {
+                errorMessageNumber(input, true);
+                continue;
+            }
+            if (input.equals("1")) {
+                Sandwich grandPhilly = new Sandwich("Signature Sandwich-Grand Philly Cheesesteak",
+                        "Large-12inch", "White");
+                //add meat
+                grandPhilly.addTopping(new Topping("Meat", "Steak", "Large-12inch",
+                        false));
+                grandPhilly.addTopping(new Topping("Meat", "Steak", "Large-12inch",
+                        true));
+                //add cheese
+                grandPhilly.addTopping(new Topping("Cheese", "American", "Large-12inch",
+                        false));
+                grandPhilly.addTopping(new Topping("Cheese", "American", "Large-12inch",
+                        true));
+                //add veggie
+                grandPhilly.addTopping(new Topping("Veggie", "Onions", "Large-12inch",
+                        false));
+                return grandPhilly;
+            } else if(input.equals("2")) {
+                Sandwich largeChickenClub = new Sandwich("Signature Sandwich-Large Chicken Club",
+                        "Large-12inch", "White");
+                //add meats
+                largeChickenClub.addTopping(new Topping("Meat", "Chicken", "Large-12inch",
+                        false));
+                largeChickenClub.addTopping(new Topping("Meat", "Bacon", "Large-12inch",
+                        false));
+                //add cheese
+                largeChickenClub.addTopping(new Topping("Cheese", "Cheddar", "Large-12inch",
+                        false));
+                //add veggies
+                largeChickenClub.addTopping(new Topping("Veggie", "Lettuce", "Large-12inch",
+                        false));
+                largeChickenClub.addTopping(new Topping("Veggie", "Tomatoes", "Large-12inch",
+                        false));
+                //add sauces
+                largeChickenClub.addTopping(new Topping("Sauce", "Mayonnaise", "Large-12inch",
+                        false));
+                largeChickenClub.addTopping(new Topping("Sauce", "Mustard", "Large-12inch",
+                        false));
+                return largeChickenClub;
+            } else if(input.equals("3")) {
+                break;
+            } else if(input.equals("4")) {
+                return null;
+            } else {
+                errorMessage(input, "Is An Invalid Signature Sandwich Option. Only a single number " +
+                        "(1, 2, 3, (or 4 to exit)) entered is acceptable for your sandwich size input");
+                continue;
+            }
+        }
         String sandwichName = "Custom Sandwich";
         ArrayList<Topping> toppings = new ArrayList<>();
         Sandwich newSandwich = null;

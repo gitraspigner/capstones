@@ -38,6 +38,8 @@ The Javadoc-style class comments I've made for each of the java files developed 
 ![invalidInputNumberOutOfRange.png](src/com/pluralsight/capstone2/Screenshots/invalidInputNumberOutOfRange.png)
     - **Invalid User Input (Word or Number Expected):** <br> <br>    
 ![invalidInputNonWordOrNonNumber.png](src/com/pluralsight/capstone2/Screenshots/invalidInputNonWordOrNonNumber.png)
+    - **(New) Signature Sandwich Orders:** <br> <br>
+![signatureSandwiches.png](src/com/pluralsight/capstone2/Screenshots/signatureSandwiches.png)
     - **A Complex Sandwich (pt1):** <br> <br>
 ![addComplexSandwich1.png](src/com/pluralsight/capstone2/Screenshots/addComplexSandwich1.png)
     - **A Complex Sandwich (pt2):** <br> <br>
@@ -94,12 +96,14 @@ The Javadoc-style class comments I've made for each of the java files developed 
    - Total Revenue (File Reading)
    - Total Revenue Of Specified Date (File Reading)
    - Class Javadoc-style comments are included for each class
+   - Signature Sandwiches (Grand Philly Cheesesteak, Large Chicken Club)
   - **Additional Thoughts:**
    - It should be noted that for both extra features implemented (Total Revenue and Total Revenue Of Specified Date), that revenue from the current user session is not included. I thought this would be good design since revenue should only be added and reported for a successfully completed (and properly exited) user session (which typically should be at the end of the day of an employee operating the Sandwich Shop application to take orders).
    - Class Javadoc-style comments are included for each class, including the JUnit test classes.
    - Development branch & project board were utilized for this project. Neither were particularly hard to use for me.
    - The most recent orders/transactions are appended to the end of the receipts.csv file, which is different from my first capstone where they are appended to the top. This design lead to a more efficient program where all orders/transactions from the output file did not have to be read, built, stored, and written twice during a single program session (once at the start and once at the end).
    - There was an extra feature I wanted to implement: The Combo Meal, where if a user placed an order for a Sandwich, Drink, and Chip they'd receive 10% off their order. Due to time constraints and wanting to focus on other aspects of this project (including documentation, which I consider to be important as per my University of Washington teachings), I decided to omit this feature.
+   - The Signature Sandwich feature was implemented last-minute. Its implementation is based off of Menus.getSandwich() as opposed to a static method within Sandwich. If I had more time, I would've done that instead, but I needed to focus on my presentation (and updating my documentation).
 ---
 
 # Capstone 1
