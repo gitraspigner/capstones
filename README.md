@@ -5,9 +5,9 @@
 ![Java](https://img.shields.io/badge/language-Java-blue.svg)
 ![IDE](https://img.shields.io/badge/IDE-IntelliJ-orange)
 
-| Active/Inactive | Active Dates |
-| --- | --- |
-| ![Status](https://img.shields.io/badge/status-active-brightgreen) | 10/10/2025 - XX/XX/XXXX|
+| Active/Inactive                                                   | Active Dates            |
+|-------------------------------------------------------------------|-------------------------|
+| ![Status](https://img.shields.io/badge/status-active-brightgreen) | 10/10/2025 - XX/XX/XXXX |
 
 ### 📝 Description
 Contains a collection of my capstone projects. <br>
