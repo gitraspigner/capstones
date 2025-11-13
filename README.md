@@ -29,27 +29,36 @@ The Javadoc-style class comments I've made for each of the java files developed 
   - **Description:** Simulates a Sandwich Shop application (ran from a command line interface). <br>
     The user (typically an employee of the shop) navigates a series of menus to accomplish basic order-related tasks of a sandwich shop. These tasks include creating a new order (with an order name) that consists of a series of items (either Sandwich, Chip, or Drink). Sandwiches can have multiple toppings, Chips are only offered of one size (Regular). Drinks and Sandwiches are offered of one of three sizes: Small, Medium, or Large. For Sandwiches, Meat & Cheese toppings each have a charge based off of the size of the Sandwich, and if the topping is an extra helping or not. Other toppings (which include Veggies and Sauces) have no charge for them. A user may also display reports including the current receipts/transactions of the day, and the total revenue from all previous user sessions. All receipts are written to a file (which, for this program is called "receipts.csv"). Each user session has its date recorded to the receipts file. All orders from that user session are recorded under the date of the user session, each order contains the name, order number (which starts from order #001 for each user session), and the items of the order.
 <br> <br>
+  - **UML Diagram:**
+![UML Diagram.png](src/com/pluralsight/capstone2/Screenshots/UML%20Diagram.png)
   - **Application Screens:**
     - **First Program Run & Welcome Message (With No Prior Receipts File):** <br>
-      ![firstProgramRunNoReceiptsFile.png](src/com/pluralsight/capstone2/Screenshots/firstProgramRunNoReceiptsFile.png)
-    - **Invalid User Input:** <br> <br>
-      ![invalidInput.png](src/com/pluralsight/capstone2/Screenshots/invalidInput.png)
+![firstProgramRunNoReceiptsFile.png](src/com/pluralsight/capstone2/Screenshots/firstProgramRunNoReceiptsFile.png)
+    - **Invalid User Input (Number Out Of Range Of Menu Options):** <br> <br>
+![invalidInputNumberOutOfRange.png](src/com/pluralsight/capstone2/Screenshots/invalidInputNumberOutOfRange.png)
+    - **Invalid User Input (Word or Number Expected):** <br> <br>    
+![invalidInputNonWordOrNonNumber.png](src/com/pluralsight/capstone2/Screenshots/invalidInputNonWordOrNonNumber.png)
     - **A Complex Sandwich (pt1):** <br> <br>
-      ![addComplexSandwich1.png](src/com/pluralsight/capstone2/Screenshots/addComplexSandwich1.png)
+![addComplexSandwich1.png](src/com/pluralsight/capstone2/Screenshots/addComplexSandwich1.png)
     - **A Complex Sandwich (pt2):** <br> <br>
-      ![addComplexSandwich2.png](src/com/pluralsight/capstone2/Screenshots/addComplexSandwich2.png)
-    - **Drink + Chips of A Complex Sandwich Order:** <br> <br>
-      ![restOfComplexOrder.png](src/com/pluralsight/capstone2/Screenshots/restOfComplexOrder.png)
+![addComplexSandwich2.png](src/com/pluralsight/capstone2/Screenshots/addComplexSandwich2.png)
+    - **A Complex Sandwich (pt3):** <br> <br>
+![addComplexSandwich3.png](src/com/pluralsight/capstone2/Screenshots/addComplexSandwich3.png)
     - **A Non-Sandwich Order:** <br> <br>
-      ![addNonSandwichOrder.png](src/com/pluralsight/capstone2/Screenshots/addNonSandwichOrder.png)
+![addNonSandwichOrder.png](src/com/pluralsight/capstone2/Screenshots/addNonSandwichOrder.png)
     - **Add Simple Sandwich (No Drink or Chip) Order:** <br> <br>
-      ![addSimpleSandwichOrder.png](src/com/pluralsight/capstone2/Screenshots/addSimpleSandwichOrder.png)
+![addSimpleSandwichOrder.png](src/com/pluralsight/capstone2/Screenshots/addSimpleSandwichOrder.png)
+    - **Display Orders of Current Session:** <br> <br>
+![displayOrdersOfCurrentSession.png](src/com/pluralsight/capstone2/Screenshots/displayOrdersOfCurrentSession.png)
     - **Receipts File After Tests (Above):** <br> <br>
-      ![receipts-csv-AfterTest.png](src/com/pluralsight/capstone2/Screenshots/receipts-csv-AfterTest.png)
-      <br> <br>
-  - **Interesting Code Snippets:**
-  - **Lambda Functions:**
-  - Menus.getOrder()
+![receipts-csv-afterExitingApplication.png](src/com/pluralsight/capstone2/Screenshots/receipts-csv-afterExitingApplication.png)
+    - **Display Total Revenue Of Previous Sessions:** <br> <br>
+![displayTotalRevenuePreviousSessions.png](src/com/pluralsight/capstone2/Screenshots/displayTotalRevenuePreviousSessions.png)
+    - **Receipts File, Multiple Days/Sessions Supported** <br> <br>
+![receipts-csv-multipleDaysSessions.png](src/com/pluralsight/capstone2/Screenshots/receipts-csv-multipleDaysSessions.png)
+
+    <br> <br>
+  - **Interesting Code Snippets (Lambda Functions):**
   ```java
       public static Order getOrder(int orderNumber) {
           return orders.stream()
@@ -58,7 +67,6 @@ The Javadoc-style class comments I've made for each of the java files developed 
               .orElse(null);
     }
   ```
-  - Menus.displayOrders()
   ```java
         public static void displayOrders() {
         if (orders.isEmpty()) {
@@ -80,17 +88,16 @@ The Javadoc-style class comments I've made for each of the java files developed 
         });
     }
   ```
-   - **Thoughts:**
-
-  - **Extra Features**
-
-  - **Snippet:**
-    ```java
-    //code here
-    ```
-
-  - **Why it's interesting:** -In Progress-
-  - **Additional Thoughts:** -In Progress-
+  - **Why they're interesting:**
+   - They use lambdas, and I had to use lambdas to fulfill a requirement for this capstone. They both use Java stream, getOrder() retrieves an order via its order number using filter(), and displayOrders() uses two nested forEachs to display Order and Item data fields in order to displays all orders. That's pretty much it, nothing too special here.
+  - **Extra Features:**
+   - Total Revenue (File Reading)
+   - Total Revenue Of Specified Date (File Reading)
+   - Class Javadoc-style comments are included for each class
+  - **Additional Thoughts:**
+   - It should be noted that for both extra features implemented (Total Revenue and Total Revenue Of Specified Date), that revenue from the current user session is not included. I thought this would be good design since revenue should only be added and reported for a successfully completed (and properly exited) user session (which typically should be at the end of the day of an employee operating the Sandwich Shop application to take orders).
+   - Class Javadoc-style comments are included for each class, including the JUnit test classes.
+   - The most recent orders/transactions are appended to the end of the receipts.csv file, which is different from my first capstone where they are appended to the top. 
 ---
 
 # Capstone 1
