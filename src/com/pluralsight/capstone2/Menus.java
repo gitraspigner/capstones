@@ -1,4 +1,7 @@
 package com.pluralsight.capstone2;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -77,7 +80,7 @@ public class Menus {
             } else if (input.equals("2")) {
                 while (true) {
                     System.out.print("-Display (1-Orders, 2-Total Revenue Of Previous Sessions, " +
-                            "3-Exit to Main Menu): ");
+                            "3-Total Revenue of Particular Date, 4-Exit to Main Menu): ");
                     input = scanner.nextLine().trim();
                     if (!isNumber(input)) {
                         errorMessageNumber(input, true);
@@ -88,6 +91,8 @@ public class Menus {
                     } else if (input.equals("2")) {
                         displayTotalRevenue();
                     } else if (input.equals("3")) {
+                        displayTotalRevenueOfDate();
+                    } else if (input.equals("4")) {
                         break;
                     } else {
                         errorMessage(input, "Is An Invalid Menu Option. Only 1 or 2 is " +
@@ -180,6 +185,21 @@ public class Menus {
                 .orElse(null);
     }
 
+    public static void displayTotalRevenueOfDate() {
+        String date;
+        System.out.print("Please enter a date for the total revenue to display " +
+                "(formatted: MM-DD-YYYY): ");
+        date = scanner.nextLine().trim();
+        if (!isDate(date)) {
+            errorMessage(date, "is not a Date (formatted: MM-DD-YYYY)");
+        } else {
+            System.out.println("----Total Revenue of Date: " + date + "----");
+            System.out.printf("$%.2f", ReceiptsFileManager.getTotalRevenueOfDate(date));
+            System.out.println();
+        }
+
+    }
+
     public static void displayTotalRevenue() {
         System.out.println("----Total Revenue----");
         System.out.printf("$%.2f", totalRevenue);
@@ -212,6 +232,15 @@ public class Menus {
             Double.parseDouble(input); //will return true for doubles/decimals and ints
             return true;
         } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    public static boolean isDate(String input) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        try {
+            LocalDate.parse(input, formatter);
+            return true;
+        } catch (DateTimeParseException e) {
             return false;
         }
     }
