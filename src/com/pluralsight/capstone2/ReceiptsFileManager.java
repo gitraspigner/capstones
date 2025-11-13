@@ -4,6 +4,8 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import static com.pluralsight.capstone2.Menus.isDate;
+
 /**
  * This manages (stores) orders for a Sandwich Shop.
  * Orders, which include Sandwiches, Drinks, and Chips are written to a log file.
@@ -54,15 +56,15 @@ public class ReceiptsFileManager {
             bufferedWriter.newLine();
             for (Order o : Menus.orders) {
                 //write order
-                bufferedWriter.write("-Order Number: " + o.getOrderNumber() + ", Order Name: " +
+                bufferedWriter.write("---Order Number: " + o.getOrderNumber() + ", Order Name: " +
                         o.getOrderName());
                 bufferedWriter.newLine();
                 for (Item i : o.getItems()) {
                     if (i instanceof Sandwich) {
                         Sandwich s = (Sandwich) i;
                         bufferedWriter.write("Item: Sandwich: " + s.getItemName() +
-                                ", Size: " + s.getSize() + ", Base Price: $" + String.format("%.2f",
-                                s.getBasePrice()));
+                                ", Bread Type: " +s.getBreadType() + ", Size: " + s.getSize() +
+                                ", Base Price: $" + String.format("%.2f", s.getBasePrice()));
                         bufferedWriter.newLine();
                         for (Topping t : s.getToppings()) {
                             if (t.isExtra()) {
@@ -129,6 +131,33 @@ public class ReceiptsFileManager {
         }
         return totalRevenue;
     }
-
-
+    public static double getTotalRevenueOfDate(String date) {
+        double totalDateRevenue = 0.0;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(receiptsFilePath))) {
+            String line;
+            boolean counting = false;
+            while ((line = bufferedReader.readLine()) != null) {
+                line = line.trim();
+                if (isDate(line)) {
+                    counting = line.equals(date);
+                    continue;
+                }
+                if (counting && line.startsWith("Total Order Price:")) {
+                    try {
+                        String priceStr = line.substring(line.indexOf('$') + 1).trim();
+                        double price = Double.parseDouble(priceStr);
+                        totalDateRevenue += price;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid price line: " + line);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("-------------------");
+            System.out.println("No existing receipts file at: " + receiptsFilePath);
+            System.out.println("This might be your first time running this program, so that's ok!");
+            System.out.println("-------------------");
+        }
+        return totalDateRevenue;
+    }
 }

@@ -50,6 +50,7 @@ public class Sandwich extends Item {
         }
         return price;
     }
+    public String getBreadType() { return breadType; }
     public static List<String> getBreadOptions() {
         return breadOptions;
     }

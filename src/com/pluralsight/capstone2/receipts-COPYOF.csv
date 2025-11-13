@@ -1,0 +1,47 @@
+---------------------------
+11-10-2025
+---------------------------
+---Order Number: 1, Order Name: Ravi S.
+Item: Sandwich: Custom Sandwich, Bread Type: White, Size: Regular-8inch, Base Price: $7.00
+	Topping: Steak, Price: $2.00
+		Extra Topping: Steak, Price: $1.00
+	Topping: Cheddar, Price: $1.50
+		Extra Topping: Cheddar, Price: $0.60
+	Topping: Lettuce, Price: $0.00
+	Topping: Tomatoes, Price: $0.00
+	Topping: Mayonnaise, Price: $0.00
+	Topping: Mustard, Price: $0.00
+	Total Sandwich Price: $12.10
+Item: Chips: Calbee Shrimp Chips Price: $1.50
+Item: Drink: Coke-Masala Size: Large-30oz Price: $3.00
+Total Order Price: $16.60
+---Order Number: 2, Order Name: Bill B.
+Item: Chips: Lays-Sour Cream & Onion Price: $1.50
+Item: Drink: Sprite Size: Small-12oz Price: $2.00
+Total Order Price: $3.50
+---Order Number: 3, Order Name: Jim C.
+Item: Sandwich: Custom Sandwich, Bread Type: Wheat, Size: Small-4inch, Base Price: $5.50
+	Topping: Swiss, Price: $0.75
+		Extra Topping: Swiss, Price: $0.30
+	Total Sandwich Price: $6.55
+Total Order Price: $6.55
+---------------------------
+11-11-2025
+---------------------------
+---Order Number: 1, Order Name: Velma Dinkley
+Item: Chips: Lays-Original Price: $1.50
+Item: Drink: Ginger Ale Size: Regular-20oz Price: $2.50
+Total Order Price: $4.00
+---------------------------
+11-11-2025
+---------------------------
+---Order Number: 1, Order Name: Jim Dale
+Item: Chips: Funyuns Price: $1.50
+Item: Drink: Fanta-Orange Size: Regular-20oz Price: $2.50
+Total Order Price: $4.00
+---------------------------
+11-12-2025
+---------------------------
+---Order Number: 1, Order Name: Fred Jones
+Item: Drink: Coke-Regular Size: Large-30oz Price: $3.00
+Total Order Price: $3.00
