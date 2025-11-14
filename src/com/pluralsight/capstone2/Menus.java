@@ -50,6 +50,11 @@ public class Menus {
                         errorMessageNumber(orderName, false);
                         continue;
                     }
+                    //check name not date
+                    if (isDate(orderName)) {
+                        errorMessage(orderName, "is a Date, not a name");
+                        continue;
+                    }
                     //check name not empty
                     if (!orderName.isEmpty()) {
                         break;
